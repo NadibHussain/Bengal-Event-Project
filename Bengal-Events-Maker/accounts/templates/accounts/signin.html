@@ -1,0 +1,58 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% load staticfiles%}
+<br>
+<div class="errors" id="errors">
+
+</div>
+
+<div id="accounts"></div>
+<!-- <script>
+  $( "#submit" ).click(function(e) {
+        e.preventDefault();
+        var data={};
+        data.username=$('input[name=username]').val();
+        data.password=$('input[name=password]').val();
+        data.csrfmiddlewaretoken=$('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+             type:'POST',
+             url:'http://localhost:8000/api/user/login/',
+             dataType: "json",
+             data:data,
+             success:function(data){
+              gettoken();
+              
+             },
+             error:function(error){
+               console.log(error.responseJSON.non_field_errors[0])
+               document.getElementById('errors').innerHTML=`
+               <div class="alert alert-danger">
+                 ${error.responseJSON.non_field_errors[0]}
+                </div>
+              `
+             }
+            });
+            
+});
+function gettoken(){
+        var data={};
+        data.username=$('input[name=username]').val();
+        data.password=$('input[name=password]').val();
+        data.csrfmiddlewaretoken=$('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+             type:'POST',
+             url:'http://localhost:8000/api/token/',
+             data:data,
+             success:function(data){
+              localStorage.setItem("token",data.access)
+              localStorage.setItem("refresh",data.refresh)
+              console.log(data.access);
+              console.log(data.refresh);
+              window.location.replace("http://localhost:8000")
+             }
+            });
+    }
+</script> -->
+<script src="{% static "accounts/main.js"%}"></script>
+{% endblock %}
+

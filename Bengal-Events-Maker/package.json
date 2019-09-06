@@ -1,0 +1,40 @@
+{
+  "name": "bengaltraining",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "dev-polls": "webpack --mode development --watch ./polls/src/index.js --output ./polls/static/polls/main.js",
+    "dev-accounts": "webpack --mode development --watch ./accounts/src/index.js --output ./accounts/static/accounts/main.js",
+    "dev-eventmanager": "webpack --mode development --watch ./eventmanager/src/index.js --output ./eventmanager/static/eventmanager/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nadibbengal@bitbucket.org/nadibbengal/rest-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/nadibbengal/rest-framework#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^2.1.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-datepicker": "^2.5.0",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0"
+  }
+}

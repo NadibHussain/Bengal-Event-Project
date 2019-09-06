@@ -1,0 +1,115 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="csrf-token" content="{{csrf_token}}">
+        <title>Bengal Training</title>
+        
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    </head>
+    <body>
+        <header class="wrapper">
+           
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark mr-auto">
+                <a class="navbar-brand" href="">Bengal-Training</a>
+                        <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                      <!-- Links -->
+                      <div class="collapse navbar-collapse" id="collapse_target">
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:signin' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                        </li>
+                      </ul>
+                    </div>
+                    </nav>
+        </header>
+        <div class="wrapper-body">
+                <div aria-live="polite" aria-atomic="true" style="position: relative; ">
+                        <!-- Position it -->
+                        <div style="position: fixed; top :10px; right: 0; width:400px" id="toast-place">
+                      
+                        </div>
+                      </div>
+            <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        </div>
+    </body>
+    
+</html>
+
+
+
+<script>
+ 
+  $(document).ready(function(){
+        $("#vote").click(function(){
+        $(".alert").show("fade");
+        
+    });
+    $(".close").click(function(){
+        window.location.replace("/");  
+    });
+    refreshtoken();
+  }); 
+
+  
+  function refreshtoken(){
+        data={};
+        data.refresh=localStorage.getItem("refresh");
+        $.ajax({
+                type:'POST',
+                url:'http://localhost:8000/api/token/refresh/',
+                dataType: "json",
+                data:data,
+                success:function(data){
+                localStorage.setItem("token",data.access);
+                verify();
+                }
+               }); 
+}
+function verify(){
+     data={};
+        data.token=localStorage.getItem("token")
+       
+        $.ajax({
+                type:'POST',
+                url:'http://localhost:8000/api/token/verify/',
+                beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer '+localStorage.getItem("token"));
+                },
+                data:data,
+                success:function(data){
+
+                console.log("Verified");
+                
+                },
+                error:function(err){
+                window.location.replace("http://localhost:8000/signin/")
+                }
+               }); 
+ } 
+
+ function payload() {
+        token=localStorage.getItem("token");    
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace('-', '+').replace('_', '/');
+        console.log(JSON.parse(window.atob(base64)));
+        }
+</script>
+
+

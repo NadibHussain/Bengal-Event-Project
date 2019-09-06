@@ -1,0 +1,95 @@
+nav a {
+    margin-left: 30px;
+}
+.title{
+    text-align: center;
+}
+#question input{
+    display: block;
+    padding: 10px;
+    width: 100%;
+}
+#question label{
+    display: block;
+    padding: 10px;
+}
+#signin input{
+    display: block;
+    padding: 10px;
+    width: 100%;
+}
+#signin label{
+    display: block;
+    padding: 10px;
+}
+#signin .errorlist{
+    color: red;
+    list-style: none;
+}
+#signup input{
+    display: block;
+    padding: 10px;
+    width: 100%;
+}
+#signup label{
+    display: block;
+    padding: 10px;
+}
+#signup .errorlist{
+    color: red;
+    list-style: none;
+}
+.card li {
+    list-style: none;
+    
+}
+.card:hover { 
+    background-color: rgb(223, 226, 231);
+    transition: all .5s ease;
+    -webkit-transition: all 1s ease;
+    
+  }
+.pagination span{
+    margin: auto;
+
+}
+.pagination a{
+    margin: 5px;
+    
+
+}
+.alert{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+.card-footer{
+    color: gray;
+    text-align: right;
+    padding-right: 20px;
+}
+section {
+    margin: auto;
+    width: 50%;
+  }
+.tag-selector select{
+    width: 150px;
+    height: 50px;
+    
+    
+}
+.add{
+    background-color:  #007bff;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 30px;
+}
+
+#page-buttons{
+    text-align: center;
+}

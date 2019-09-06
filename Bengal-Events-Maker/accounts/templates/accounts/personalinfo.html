@@ -1,0 +1,25 @@
+
+{% extends 'base_layout.html' %}
+{% block content %}
+<form action="/accounts/personal/" method="POST" class=""form-group"">
+    {% csrf_token %}
+    <br><br>
+    <h1>Personal Information</h1>
+      <br>
+     <span>User name :</span> <b>{{user}}</b> 
+      <br>
+      <br>
+        <h4>Select your interest(s)</h4>
+        <br>
+          {{form.interest}}
+
+      <br>
+      <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+      <input type="submit" value="signup" class="btn btn-primary">
+</form>
+<script>
+    // for styling only
+    var elem = document.getElementById("id_interest");
+     elem.classList.add('form-control');
+</script>
+{% endblock %}
